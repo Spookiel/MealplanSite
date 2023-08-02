@@ -1,29 +1,45 @@
 {% extends "recipes/base.html" %}
 {% block content %}
-<div class="text-center">
-    <h2> Recipes: </h2>
+{%load static%}
+<div class="text-center bg-secondary-subtle">
+    <div class="h1"> Recipes </div>
 </div>
-<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+<div class="container-lg my5">
+    {% comment %} <img src="{% static 'recipes/fuji-bg.jpg' %}" alt="My image" class="bg-image bg-cover"> {% endcomment %}
+    
     
     {% if recipes %}
-        <div class="list-group">
+        <div class="row mb-3 bg-light text-light">
             {% for recipe in recipes %}
-            <a href="#" class="list-group-item list-group-item-action d-flex gap-5 py-3 w-300 bg-body-secondary" aria-current="true">
-            
-                <div class="d-flex gap-2 w-200 justify-content-between">
-                    <div>
-                        <h6 class="text-light"> {{recipe.name}} </h3>
-                        <ul class="list-group">
+
+
+                <div class="col">
+                    {% comment %} <div class="p-5 bg-secondary text-light rounded">
+                            <div class="h3 text-light text-center"> {{recipe.name}} </div>
+                            <ul class="list-group">
+                                {% for ing in recipe.ingredients.all %}
+                                    <div class="list-group-item">
+                                        <div class="text-left">{{ing}} </div>
+                                    </div>
+                                {% endfor %}
+                            </ul>
+                    </div> {% endcomment %}
+                    <div class="card bg-secondary text-light" style="width: 24rem;">
+                        <img src="{% static 'recipes/beef-stir-fry.jpg' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{recipe.name}}</h5>
+                          <ul class="list-group">
                             {% for ing in recipe.ingredients.all %}
-                                <li class="list-group-item bg-body-tertiary text-light"> {{ing}} </li>
+                                <div class="list-group-item">
+                                    <div class="text-left">{{ing}} </div>
+                                </div>
                             {% endfor %}
                         </ul>
-                    </div>
+                          <a href="#" class="btn btn-light mt-3">Recipe details</a>
+                        </div>
+                      </div>
                     
                 </div>
-                <div class="b-example-divider"></div>
-            </a>
-
 
             {% endfor %}
         </div>
