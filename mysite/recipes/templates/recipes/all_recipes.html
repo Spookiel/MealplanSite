@@ -35,7 +35,7 @@
                                 </div>
                             {% endfor %}
                         </ul>
-                          <a href="#" class="btn btn-light mt-3">Recipe details</a>
+                          <a href="{% url 'recipes:recipe_detail' recipe.id %}" class="btn btn-light mt-3">Recipe details</a>
                         </div>
                       </div>
                     
