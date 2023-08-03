@@ -10,7 +10,7 @@
     
     {% if recipes %}
         <div class="row mb-3 bg-light text-light">
-            {% for recipe in recipes %}
+            {% for recipe, vals in rdetails.items %}
 
 
                 <div class="col">
@@ -29,9 +29,9 @@
                         <div class="card-body">
                           <h5 class="card-title">{{recipe.name}}</h5>
                           <ul class="list-group">
-                            {% for ing in recipe.ingredients.all %}
+                            {% for ing in vals %}
                                 <div class="list-group-item">
-                                    <div class="text-left">{{ing}} </div>
+                                    <div class="text-left">{{ing.iname}} ({{ing.recipeQuantityGrams|floatformat}}g)  </div>
                                 </div>
                             {% endfor %}
                         </ul>
