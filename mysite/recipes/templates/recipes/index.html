@@ -1,0 +1,61 @@
+{% extends "recipes/base.html" %}
+
+{% block content%}
+{% load static %}
+<div class="d-flex vh-60 text-center text-bg-secondary py-5">
+
+  <main class="px-3">
+    <h1>Meal Tracker. Recipes. One place. </h1>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+    <p class="lead">
+      <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white">Learn more</a>
+    </p>
+  </main>
+</div>
+
+<div class="container-fluid pt-3">
+
+    <div class="row px-5">
+        <div class="col-sm d-flex justify-content-center">
+            <div class="card bg-secondary text-light" style="width: 18rem;">
+                <img src="{% static 'recipes/chef-chopping.jpg' %}" class="card-img-top" alt="Chef chopping">
+                <div class="card-body">
+                  <h5 class="card-title">Custom recipes</h5>
+                  <p class="card-text">
+                    The site uses the latest AI to generate custom receipes for you. 
+                  </p>
+                  <a href="{% url 'recipes:recipe_list' %}" class="btn btn-primary">Start now</a>
+                  
+                </div>
+              </div>
+              
+        </div>
+        <div class="col-sm d-flex justify-content-center">
+            <div class="card bg-secondary text-light" style="width: 18rem;">
+                <img src="{% static 'recipes/fuji-bg.jpg' %}" class="card-img-top" alt="Chef chopping">
+                <div class="card-body">
+                  <h5 class="card-title">Peace of mind</h5>
+                  <p class="card-text">
+                    Don't like a recipe? <br> Get a new one at click of a button.
+                  </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm d-flex justify-content-center">
+            <div class="card bg-secondary text-light" style="width: 18rem;">
+                <img src="{% static 'recipes/food-variety.jpg' %}" class="card-img-top" alt="Chef chopping">
+                <div class="card-body">
+                  <h5 class="card-title">Tailored to your diet</h5>
+                  <p class="card-text">
+                    The AI adapts the meals to your meal history, ensuring you have the required nutrients for the week.
+                  </p>
+                  <a href="{% url 'recipes:meal_planner_home' %}" class="btn btn-primary">Start yours now.</a>
+                </div>
+              </div>
+        </div>
+        
+    </div>
+</div>
+
+{% endblock content %}
