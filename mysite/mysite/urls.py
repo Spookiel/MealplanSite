@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from recipes.views import recipe_list, recipe_detail, index
+from accounts.views import login
 
 app_name = "MANAGER"
 urlpatterns = [
     path('', index, name="index"), ## include('recipes.urls')
     path('recipes', include('recipes.urls')),
     path('admin/', admin.site.urls),
+    path('login', login, name="login")
 ]

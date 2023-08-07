@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 {%load static%}
-<div class="text-center bg-secondary-subtle">
-    <div class="h1"> Recipes </div>
+<div class="text-center">
+    <div class="h1 bg-secondary pb-3 pt-1 text-light"> Recipes </div>
 </div>
 <div class="container-lg my5">
     {% comment %} <img src="{% static 'recipes/fuji-bg.jpg' %}" alt="My image" class="bg-image bg-cover"> {% endcomment %}
     
     
     {% if recipes %}
-        <div class="row mb-3 bg-light text-light">
+        <div class="row mb-3">
             {% for recipe, vals in rdetails.items %}
 
 
