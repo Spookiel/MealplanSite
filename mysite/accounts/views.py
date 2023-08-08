@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login as auth_login, authenticate
 from django.contrib import messages
 # Create your views here.
 
@@ -9,11 +9,10 @@ def login(request):
     if request.method == "POST":
 
         user = authenticate(request, username=request.POST["username"], password=request.POST["password"])
-
+        auth_login(request, user)
         if user is None:
             context = {"error":"Invalid username or password"}
             return render(request, "accounts/login.html", context)
-
         
         return redirect("index")
     return render(request, "accounts/login.html")
