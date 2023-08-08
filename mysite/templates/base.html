@@ -27,12 +27,30 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Meal Tracker</a>
+                {% if user.is_authenticated %}
+                  <a class="nav-link active" aria-current="page" href="{% url 'tracker:tracker_index' %}">Meal Tracker</a>
+                {% else %}
+                  <a class="nav-link disabled" aria-current="page" href="#" aria-disabled="true">Meal Tracker</a>
+                {% endif %}
               </li>
-            
+              
+              {%if not user.is_authenticated%}
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'recipes:recipe_list' %}">Recipes</a>
               </li>
+              {% else %}
+              <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Recipe Options
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'recipes:recipe_list' %}">All recipes</a></li>
+                  <li><a class="dropdown-item" href="#">My recipes</a></li>
+                  {% comment %} <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li> {% endcomment %}
+                </ul>
+              </li>
+              {% endif %}
 
               <li class="nav-item">
                 {% if  user.is_authenticated%}
@@ -53,10 +71,10 @@
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li> {% endcomment %}
-              <li class="nav-item">
+              {% comment %} <li class="nav-item">
                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
               </li>
-            </ul>
+            </ul> {% endcomment %}
             {% comment %} <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
