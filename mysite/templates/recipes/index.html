@@ -31,7 +31,7 @@
               </div>
               
         </div>
-        <div class="col-sm d-flex justify-content-center">
+        <div class="col-sm d-flex justify-content-center order-3">
             <div class="card bg-secondary text-light" style="width: 18rem;">
                 <img src="{% static 'recipes/fuji-bg.jpg' %}" class="card-img-top" alt="Chef chopping">
                 <div class="card-body">
@@ -39,11 +39,11 @@
                   <p class="card-text">
                     Don't like a recipe? <br> Get a new one at click of a button.
                   </p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  {% comment %} <a href="#" class="btn btn-primary">Go somewhere</a> {% endcomment %}
                 </div>
               </div>
         </div>
-        <div class="col-sm d-flex justify-content-center">
+        <div class="col-sm d-flex justify-content-center order-2">
             <div class="card bg-secondary text-light" style="width: 18rem;">
                 <img src="{% static 'recipes/food-variety.jpg' %}" class="card-img-top" alt="Chef chopping">
                 <div class="card-body">
@@ -51,7 +51,11 @@
                   <p class="card-text">
                     The AI adapts the meals to your meal history, ensuring you have the required nutrients for the week.
                   </p>
-                  <a href="{% url 'recipes:meal_planner_home' %}" class="btn btn-primary">Start yours now.</a>
+                  {% if not user.is_authenticated %}
+                    <a href="{% url 'register' %}" class="btn btn-primary">Start yours now.</a>
+                  {% else %}
+                    <a href="{% url 'recipes:recipe_list' %}" class="btn btn-primary">See yours now</a>
+                  {% endif %}
                 </div>
               </div>
         </div>

@@ -36,6 +36,9 @@
                             {% endfor %}
                         </ul>
                           <a href="{% url 'recipes:recipe_detail' recipe.id %}" class="btn btn-light mt-3">Recipe details</a>
+                          {% if user.is_authenticated %}
+                            <a href="" class="btn btn-light mt-3">Save recipe</a>
+                          {% endif %}
                         </div>
                       </div>
                     

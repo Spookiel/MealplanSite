@@ -26,7 +26,9 @@ def recipe_detail(request, recipe_id):
     return render(request, "recipes/recipe_detail.html", {"recipe":recipe})
 
 def index(request):
-    return render(request, "recipes/index.html")
+
+    context = {}
+    return render(request, "recipes/index.html", context)
 
 def meal_planner(request):
     return render(request, "BLAH")
