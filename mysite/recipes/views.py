@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 
-from .models import Recipe, RecipeIngredient
+from .models import Recipe, RecipeIngredient, StorageUnit
 
 
 def recipe_list(request):
@@ -34,4 +34,15 @@ def meal_planner(request):
     return render(request, "BLAH")
 
 def storage_index(request):
-    return render(request, "recipes/storage-index.html")
+    store_units = StorageUnit.objects.filter(owner=request.user)
+    assert len(store_units) == 1
+    store_unit = store_units[0]
+    fridge_ings = store_unit.ingredients.filter(storageingredient__isFridge=True)
+    print(fridge_ings)
+    print(store_unit)
+    context = {"fridge_ings":fridge_ings}
+
+
+
+
+    return render(request, "storage/index.html", context)

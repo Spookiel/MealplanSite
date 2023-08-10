@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{%block content%}
+<div class="h1 text-light text-center"> Storage list: </div>
+
+<div class="container-fluid text-center pt-5 mt-3">
+    <div class="h4 text-light"> These are your fridge ingredients! </div>
+    <ul class="list-group pt-3 mt-2">
+        {% for fridge_ing in fridge_ings%}
+        <div class="list-item text-light"> {{ fridge_ing }} </div>
+        {% endfor %}
+    </ul>
+</div>
+
+{%endblock content%}
