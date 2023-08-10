@@ -39,6 +39,8 @@ class StorageUnit(models.Model):
     owner = models.ForeignKey(auth.models.User, on_delete=models.CASCADE)
     ingredients = models.ManyToManyField(Ingredient, through='StorageIngredient')
 
+    def __str__(self):
+        return f"{self.owner.__str__()}'s Unit"
 class StorageIngredient(models.Model):
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
     storage_unit = models.ForeignKey(StorageUnit, on_delete=models.CASCADE)
@@ -47,3 +49,5 @@ class StorageIngredient(models.Model):
     stored_at = models.DateTimeField(auto_now_add=True)
     expires_at = models.DateTimeField(default=in_three_days)
     
+    def __str__(self):
+        return f"{self.ingredient.__str__()} is stored in {self.storage_unit.__str__()}"
