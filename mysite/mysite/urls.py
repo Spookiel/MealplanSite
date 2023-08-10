@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from recipes.views import recipe_list, recipe_detail, index
+from recipes.views import recipe_list, recipe_detail, index, storage_index
 from accounts.views import login, register, logout
 
 app_name = "MANAGER"
@@ -26,5 +26,6 @@ urlpatterns = [
     path('login', login, name="login"),
     path('register', register, name="register"),
     path('logout', logout, name="logout"),
-    path("meal-tracker", include('tracker.urls'))
+    path("meal-tracker", include('tracker.urls')),
+    path("storage", storage_index, name="storage-index")
 ]

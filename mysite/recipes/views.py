@@ -32,3 +32,6 @@ def index(request):
 
 def meal_planner(request):
     return render(request, "BLAH")
+
+def storage_index(request):
+    return render(request, "recipes/storage-index.html")
